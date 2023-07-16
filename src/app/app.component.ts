@@ -6,5 +6,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'calculator';
+  display: string = '';
+
+  appendToDisplay(value: string) {
+    this.display += value;
+  }
+
+  calculate() {
+    try {
+      this.display = eval(this.display);
+    } catch (error) {
+      console.error(error);
+      this.display = 'Hatalı ifade';
+    }
+  }
+
+  clear() {
+    this.display = '';
+  }
 }
